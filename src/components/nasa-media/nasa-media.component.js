@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const NasaImage = () => {
+const NasaMedia = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -11,6 +11,8 @@ const NasaImage = () => {
                     method: 'GET'
                 });
                 const result = await response.json();
+                console.log("result", result); // Lägg till denna rad för att se vad som returneras
+
                 setData(result);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -23,7 +25,18 @@ const NasaImage = () => {
         <div id="output">
             {data ? (
                 <div>
-                    <img src={data.url} alt="NASA" />
+                    {data.media_type === "image" ? (
+                        <img src={data.url} alt="NASA" />
+                    ) : (
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src={data.url} 
+                            title={data.title} 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowFullScreen
+                        ></iframe>
+                    )}
                     <p>{data.explanation}</p>
                 </div>
             ) : (
@@ -33,4 +46,4 @@ const NasaImage = () => {
     );
 };
 
-export default NasaImage;
+export default NasaMedia;

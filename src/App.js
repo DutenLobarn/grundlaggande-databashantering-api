@@ -1,12 +1,16 @@
 import './App.css';
-import NasaImage from './components/nasa-image/nasa-image.component';
+import NasaMedia from './components/nasa-media/nasa-media.component';
 import PostForm from './components/post-form/post-form.component';
 
 function App() {
   return (
     <div className="App">
-     <NasaImage/>
-     <PostForm/>
+      <p>------Nasa Media----</p> 
+      <NasaMedia/> 
+     <p>------Här slutar Nasa Media----</p>
+     <br/>
+     <p>------PostForm----</p>
+     <PostForm/> 
     </div>
   );
 }
